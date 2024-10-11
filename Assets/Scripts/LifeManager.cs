@@ -12,8 +12,9 @@ public class LifeManager : MonoBehaviour
     private int currentLives;
 
     public Transform destination;
-
     private CharacterController playerController;
+
+    public AudioSource loseLifeSound; // Référence à l'AudioSource pour jouer le son
 
     void Start()
     {
@@ -46,6 +47,12 @@ public class LifeManager : MonoBehaviour
         {
             currentLives--;
             UpdateHearts();
+
+            // Joue le son de perte de vie
+            if (loseLifeSound != null)
+            {
+                loseLifeSound.Play();
+            }
 
             if (destination != null)
             {
